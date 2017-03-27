@@ -6,8 +6,8 @@
 
 class CException {
 public:
-	CException( const std::string& theMessage = std::string("") ) : message( theMessage ) {}
-
+	CException( const std::string& theMessage = std::string( "" ) ) : message( theMessage ) {}
+	virtual ~CException() {};
 	std::string GetMessage() const;
 private:
 	std::string message;
@@ -57,7 +57,7 @@ void ThrowException( CException* e );
 	{ \
 		T* e; \
 		if( ( e = dynamic_cast<T*>( Try.except ) ) != 0 ) { \
-			if( Try.handled ) { delete Try.except; Try.except = 0; \
+			if (Try.handled ) { delete Try.except; Try.except = 0; \
 			} else { Try.handled = true; } \
 		} \
 	} if( T* e = dynamic_cast<T*>( Try.except ) )

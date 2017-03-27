@@ -7,7 +7,8 @@ std::string CException::GetMessage() const
 	return message;
 }
 
-CTry::CTry() : opened( true ), lastTry( exceptionMechanism.latestTry ), handled( true ), except( 0 ), catchRunning( false )
+CTry::CTry()
+	: opened( true ), lastTry( exceptionMechanism.latestTry ), handled( true ), except( 0 ), catchRunning( false )
 {
 	exceptionMechanism.latestTry = this;
 }
@@ -49,7 +50,6 @@ CTry* CTry::GetLastTry()
 
 void ThrowException( CException* e )
 {
-	// если до этого уже было необработанное исключение то убиваемся
 	if( exceptionMechanism.except != 0 ) {
 		std::terminate();
 	}
@@ -63,6 +63,5 @@ void ThrowException( CException* e )
 			longjmp( handler->env, 1 );
 		}
 	}
-	// если не обработали
 	std::terminate();
 }
