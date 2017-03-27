@@ -27,10 +27,10 @@ int main()
 		//{
 		//	std::cout << e->GetMessage() << " 1 " << '\n';
 		//}
-		//CATCH( CException, e )
-		//{
-		//	std::cout << e->GetMessage() << " 2 " << '\n';
-		//}
+		CATCH( CException, e )
+		{
+			std::cout << e->GetMessage() << " 2 " << '\n';
+		}
 		ENDTRYCATCH;
 	}
 	CATCH( CException, e )

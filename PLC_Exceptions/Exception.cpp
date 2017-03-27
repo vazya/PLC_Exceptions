@@ -7,8 +7,7 @@ std::string CException::GetMessage() const
 	return message;
 }
 
-CTry::CTry()
-	: opened( true ), lastTry( exceptionMechanism.latestTry ), handled( true ), except( 0 ), catchRunning( false )
+CTry::CTry() : opened( true ), lastTry( exceptionMechanism.latestTry ), handled( true ), except( 0 ), catchRunning( false )
 {
 	exceptionMechanism.latestTry = this;
 }
